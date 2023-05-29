@@ -1,34 +1,48 @@
-vector<int> findPrimeFactors(int N)
-{
-    vector<int> primes;
-    bool sieve[int(sqrt(N)) + 1];
-    memset(sieve, true, sizeof(sieve));
+#define MAXN 100001
 
-    for (int p = 2; p * p <= N; p++)
+// stores smallest prime factor for every number
+int spf[MAXN];
+
+// Time Complexity : O(nloglogn)
+void sieve()
+{
+    spf[1] = 1;
+    for (int i = 2; i < MAXN; i++)
+        // marking smallest prime factor for every
+        // number to be itself.
+        spf[i] = i;
+
+    // separately marking spf for every even
+    // number as 2
+    for (int i = 4; i < MAXN; i += 2)
+        spf[i] = 2;
+
+    for (int i = 3; i * i < MAXN; i++)
     {
-        if (sieve[p])
+        // checking if i is prime
+        if (spf[i] == i)
         {
-            primes.push_back(p);
-            for (int i = p * p; i <= sqrt(N); i += p)
+            // marking SPF for all numbers divisible by i
+            for (int j = i * i; j < MAXN; j += i)
             {
-                sieve[i] = false;
+                // marking spf[j] if it is not
+                // previously marked
+                if (spf[j] == j)
+                    spf[j] = i;
             }
         }
     }
+}
 
-    vector<int> factors;
-    for (int i = 0; i < primes.size(); i++)
+// A O(log n) function returning primefactorization
+// by dividing by smallest prime factor at every step
+vector<int> getFactorization(int x)
+{
+    vector<int> ret;
+    while (x != 1)
     {
-        while (N % primes[i] == 0)
-        {
-            factors.push_back(primes[i]);
-            N /= primes[i];
-        }
+        ret.push_back(spf[x]);
+        x = x / spf[x];
     }
-
-    if (N > 1)
-    {
-        factors.push_back(N);
-    }
-    return factors;
+    return ret;
 }

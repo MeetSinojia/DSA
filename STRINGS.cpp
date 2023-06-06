@@ -13,6 +13,10 @@ str.insert(5, " World"); // Inserts " World" at index 5
 char ch = '7';
 int intValue = ch - '0';
 
+// String to int & long long
+int n = stoi(s);
+long long n = stoll(s);
+
 // Int to string
 int i_val = 20;
 string stri = to_string(i_val);

@@ -21,3 +21,6 @@ cout << __builtin_popcountll(2) // If number is long long
 // next_permutation
 int arr[] = {1, 3, 2};
 next_permutation(arr, arr + 3); // using in-built function of C++
+
+// next_permutation for string will return true if it is possible
+bool val = next_permutation(s.begin(), s.end());

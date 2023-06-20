@@ -19,4 +19,14 @@ long long n = stoll(s);
 
 // Int to string
 int i_val = 20;
-string stri = to_string(i_val);
+string str = to_string(i_val);
+
+// String stream
+string input = "1,2,3,4";
+stringstream ss(input);
+string token;
+
+while (getline(ss, token, ',')) 
+{
+  cout << token<<endl;
+}

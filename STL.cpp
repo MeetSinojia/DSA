@@ -28,5 +28,13 @@ cout << __builtin_popcountll(2) // If number is long long
 int arr[] = {1, 3, 2};
 next_permutation(arr, arr + 3); // using in-built function of C++
 
-// next_permutation for string will return true if it is possible
+// next_permutation for the string will return true if it is possible
 bool val = next_permutation(s.begin(), s.end());
+
+// Multiset
+// can find max and min and add and remove elements in log(N)
+multiset<int> st;
+maxi = *st.rbegin();
+mini = *st.begin();
+st.erase(st.find(x]));
+st.insert(x);

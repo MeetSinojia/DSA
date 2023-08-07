@@ -4,18 +4,11 @@
 // UNORDERED SET
 // An unordered set in STL is a container that stores unique elements in no particular order. Every operation on an unordered set takes O(1) complexity in the average case and takes O(n) in the worst case.
 
-struct CustomComparator {
-    bool operator()(const pair<int, int>& a, const pair<int, int>& b) const {
-        // Compare the first elements of the pairs
-        if (a.first < b.first)
-            return true;
-        else if (a.first > b.first)
-            return false;
-        
-        // If the first elements are equal, compare the second elements
-        return a.second < b.second;
-    }
-};
+bool customComparator(const pair<int, int>& a, const pair<int, int>& b) 
+{
+    return a.first < b.first;
+}
+
 
 // Declaration of priority queue using the custom comparator
 priority_queue<pair<int, int>, vector<pair<int, int>>, CustomComparator> pq;

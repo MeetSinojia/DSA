@@ -1,3 +1,5 @@
+// Segment tree solution: https://codeforces.com/contest/61/submission/201124132
+
 #include <iostream>
 #include <vector>
 
